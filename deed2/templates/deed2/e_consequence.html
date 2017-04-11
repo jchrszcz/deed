@@ -1,0 +1,17 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Consequential Choice
+{% endblock %}
+
+{% block content %}
+
+    <h4>Instructions</h4>
+    <p>
+        The next screen will present a consequential choice.
+        Though this screen will look the same as the last 50 choices, you will not receive feedback on your choice and your bonus payment will be based on the outcome of this choice.
+    </p>
+
+    {% next_button %}
+{% endblock %}

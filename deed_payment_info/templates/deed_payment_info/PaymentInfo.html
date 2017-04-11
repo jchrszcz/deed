@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Thank you
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-default" style="margin-bottom:10px">
+        <div class="panel-body">
+            <p>Congratulations, you've earned {{ total|c }}.</p>
+
+            <p>As a precaution, please enter your Amazon Mechnical Turk Identification Number in the field below.</p>
+            <p><em>
+        </div>
+    </div>
+
+{% formfield player.turkid with label="MTurk ID:"%}
+
+{% next_button %}
+
+{% endblock %}
