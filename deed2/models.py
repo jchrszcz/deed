@@ -3,7 +3,6 @@ from otree.api import (
     Currency as c, currency_range
 )
 
-import feather
 import subprocess
 import random
 import pandas as pd
