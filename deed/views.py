@@ -3,7 +3,6 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-import feather
 import subprocess
 import random
 import pandas as pd
