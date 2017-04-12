@@ -67,15 +67,15 @@ class Subsession(BaseSubsession):
 	def before_session_starts(self):
 		if self.round_number == 1:
 			for p in self.get_players():
-				p.participant.vars['stims'] = stim_setup()
+				p.participant.vars['stims3'] = stim_setup()
 				if random.random() < .5:
-					p.participant.vars['order'] = 1
+					p.participant.vars['order3'] = 1
 				else:
-					p.participant.vars['order'] = Constants.num_rounds
+					p.participant.vars['order3'] = Constants.num_rounds
 				if random.random() < .5:
-					p.participant.vars['pay_pick'] = 1
+					p.participant.vars['pay_pick3'] = 1
 				else:
-					p.participant.vars['pay_pick'] = Constants.num_rounds
+					p.participant.vars['pay_pick3'] = Constants.num_rounds
 
 class Group(BaseGroup):
     pass
