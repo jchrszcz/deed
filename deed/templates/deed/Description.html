@@ -36,9 +36,11 @@
 
     </div>
 
-    {% formfield player.choice with label="I choose:" %}
-
-    {% next_button %}
+    <p><b>I choose:</b></p>
+    <div>
+        <button name="choice" value="A" class="btn btn-primary btn-large">A</button>
+        <button name="choice" value="B" class="btn btn-primary btn-large">B</button>
+    </div>
 
 {% endblock %}
 

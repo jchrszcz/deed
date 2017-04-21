@@ -15,11 +15,12 @@
         After that, a final choice using the same payoff structure will determine your end-of-study payment.
 
     </p>
-
     
-    {% formfield player.choice with label="Please choose between A and B:" %}
-
-    {% next_button %}
+    <p><b>I choose:</b></p>
+    <div>
+        <button name="choice" value="A" class="btn btn-primary btn-large">A</button>
+        <button name="choice" value="B" class="btn btn-primary btn-large">B</button>
+    </div>
 
     <div class="panel panel-success">
 

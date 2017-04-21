@@ -81,9 +81,6 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-	choice = models.CharField(
-		choices=['A', 'B'],
-		widget=widgets.RadioSelectHorizontal()
-	)
+	choice = models.CharField()
 
 	outcome = models.IntegerField()
