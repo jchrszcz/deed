@@ -125,7 +125,12 @@ class Pay(Page):
 		        'current_payoff': c(self.participant.payoff),
 		       }
 
+class deed_info(Page):
+	def is_displayed(self):
+		return self.round_number == 1
+
 page_sequence = [
+	deed_info,
 	e_consequence,
 	d_intro,
     Description,

@@ -142,7 +142,7 @@ SESSION_CONFIGS = [
         'name': 'deed',
         'display_name': 'Decisions from description and experience',
         'num_demo_participants': 1,
-        'app_sequence': ['consent', "deed_info", 'deed', 'deed2', 'deed3', 'survey', 'deed_payment_info'],
+        'app_sequence': ['consent', 'deed', 'deed2', 'deed3', 'survey', 'deed_payment_info'],
     },
 ]
 
