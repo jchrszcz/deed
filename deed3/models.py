@@ -59,7 +59,7 @@ def stim_setup():
 	return stims
 
 class Constants(BaseConstants):
-	name_in_url = 'deed'
+	name_in_url = 'deed3'
 	players_per_group = None
 	num_rounds = 22
 

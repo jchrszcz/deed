@@ -59,7 +59,7 @@ def stim_setup():
 	return stims
 
 class Constants(BaseConstants):
-	name_in_url = 'deed'
+	name_in_url = 'deed2'
 	players_per_group = None
 	num_rounds = 22
 
@@ -67,7 +67,7 @@ class Subsession(BaseSubsession):
 	def before_session_starts(self):
 		if self.round_number == 1:
 			for p in self.get_players():
-				p.participant.vars['stims'2] = stim_setup()
+				p.participant.vars['stims2'] = stim_setup()
 				if random.random() < .5:
 					p.participant.vars['order2'] = 1
 				else:
