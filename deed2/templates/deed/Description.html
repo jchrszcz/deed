@@ -1,0 +1,47 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    <!-- Round {{ subsession.round_number }} of {{ Constants.num_rounds }} -->
+    Description Block
+{% endblock %}
+
+{% block content %}
+
+    <h4>Instructions</h4>
+    <p>
+        This is a decision from description block.
+        You can choose either A or B, each option is associated with one or more payoff amounts.
+        The table below shows each payoff amount and the associated probability of receiving that payoff assuming you make the corresponding choice.
+    </p>
+
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+                Choice Descriptions
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>Choice A</th>
+                <th>Choice B</th>
+            </tr>
+            {% for row in table_rows %}
+            <tr>
+                <td>{{ row.choicea }}</td>
+                <td>{{ row.choiceb }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <p><b>I choose:</b></p>
+    <div>
+        <button name="choice" value="A" class="btn btn-primary btn-large">A</button>
+        <button name="choice" value="B" class="btn btn-primary btn-large">B</button>
+    </div>
+
+{% endblock %}
+

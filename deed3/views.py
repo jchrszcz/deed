@@ -94,9 +94,9 @@ class e_intro(Page):
 
 	def vars_for_template(self):
 		if self.round_number == 1:
-			return {'inst': 'This is a decision from experience block. For the next 50 rounds, you can choose either A or B, each option is associated with one or more payoff amounts. For fifty choices, you will see the associated payoff but receive no compensation. After that, you will make a final, consequential choice between A and B. The same payoff structure will apply, and this choice will determine your end-of-study payment.'}
+			return {'inst': 'Before you make a choice between buttons A and B, you will be allowed to explore the points that you may gain or lose from each of the buttons by pressing in the buttons and observing the outcomes, without any consequences. You will be asked to explore the buttons a fixed number of times during the sampling phase. After the sampling phase you will then be asked to make one consequential choice. Your bonus payment will depend on the number of points obtained from this consequential choice.'}
 		else:
-			return{'inst': 'This is a decision from experience block. For the next 50 rounds, you can choose either A or B, each option is associated with one or more payoff amounts. These payoffs will correspond to the explicit description presented in the first round. For fifty choices, you will see the associated payoff but receive no compentation. After that, you will make a final, consequential choice between A and B. The same payoff structure will apply, and this choice will determine your end-of-study payment.'}
+			return{'inst': 'Before you make a choice between buttons A and B, you will be allowed to explore the points that you may gain or lose from each of the buttons by pressing in the buttons and observing the outcomes, without any consequences. You will be asked to explore the buttons a fixed number of times during the sampling phase. After the sampling phase you will then be asked to make one consequential choice. Your bonus payment will depend on the number of points obtained from this consequential choice.'}
 
 class d_intro(Page):
 	def is_displayed(self):
@@ -104,9 +104,9 @@ class d_intro(Page):
 
 	def vars_for_template(self):
 		if self.round_number == 1:
-			return {'inst': 'The next page will give you information about a gamble. In this gamble, you can choose either Option A or Option B. Each option will add to or subtract from your points for the study, which will affect your final payoff. You will not receive immediate feedback on the outcome of your choice, but it will be reflected in your final point value.'}
+			return {'inst': 'Please make one choice using the explicit information about two options from which you have already sampled. The description below shows the outcomes (points) and the probability of obtaining that outcome (in parenthesis).'}
 		else:
-			return{'inst': 'The next page will give you explicit information about the options from which you have sampled in the previous 50 choices. Please choose either Option A or Option B, which will change your total point value by the amounts and probabilities listed on the next page.'}
+			return{'inst': 'Please make one choice using the explicit information about two options from which you have already sampled. The description below shows the outcomes (points) and the probability of obtaining that outcome (in parenthesis).'}
 
 
 class e_consequence(Page):
@@ -121,7 +121,7 @@ class Pay(Page):
 		return self.round_number == Constants.num_rounds
 
 	def vars_for_template(self):
-		return {'current_points': self.player.in_round(self.participant.vars['pay_pick3']).outcome,
+		return {'current_points': self.player.in_round(self.participant.vars['pay_pick']).outcome,
 		        'current_payoff': c(self.participant.payoff),
 		       }
 

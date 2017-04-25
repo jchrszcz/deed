@@ -1,0 +1,52 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    <!-- Round {{ subsession.round_number }} of {{ Constants.num_rounds }} -->
+    Experience Block
+{% endblock %}
+
+{% block content %}
+
+    <h4>Instructions</h4>
+    <p>
+        This is a decision from experience block.
+        You can choose either A or B, each option is associated with one or more payoff amounts.
+        For fifty choices, you will see the associated payoff but receive no compensation.
+        After that, a final choice using the same payoff structure will determine your end-of-study payment.
+
+    </p>
+    
+    <p><b>I choose:</b></p>
+    <div>
+        <button name="choice" value="A" class="btn btn-primary btn-large">A</button>
+        <button name="choice" value="B" class="btn btn-primary btn-large">B</button>
+    </div>
+
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+            Result from Previous Choice
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>Round #</th>
+                <th>Choice</th>
+                <th>Outcome of Choice</th>
+            </tr>
+            {% for row in table_rows %}
+            <tr>
+                <td>{{ row.round_number }}</td>
+                <td>{{ row.choice }}</td>
+                <td>{{ row.outcome }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+{% endblock %}
+
+

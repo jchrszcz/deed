@@ -59,9 +59,9 @@ def stim_setup():
 	return stims
 
 class Constants(BaseConstants):
-	name_in_url = 'deed3'
+	name_in_url = 'deed'
 	players_per_group = None
-	num_rounds = 52
+	num_rounds = 22
 
 class Subsession(BaseSubsession):
 	def before_session_starts(self):
