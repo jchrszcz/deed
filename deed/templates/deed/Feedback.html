@@ -2,22 +2,18 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    {{ title }} - Block 1
+    End of Experience - Block 1
 {% endblock %}
 
 {% block content %}
 
     <h4>Instructions</h4>
     <p>
-        {{ instructions }}
-
+        This ends the experience portion.
+        You will not receive feedback on your next choice and it will influence your bonus payment.
     </p>
     
-    <p><b>I choose:</b></p>
-    <div>
-        <button name="choice" value="A" class="btn btn-primary btn-large">A</button>
-        <button name="choice" value="B" class="btn btn-primary btn-large">B</button>
-    </div>
+    {% next_button %}
 
     <div class="panel panel-success">
 

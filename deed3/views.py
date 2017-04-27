@@ -19,8 +19,8 @@ class Display(Page):
 
 	def vars_for_template(self):
 		table_rows = []
-		if (self.participant.vars['order3'] + 1) != self.round_number:
-			if self.participant.vars['order3'] != self.round_number & self.round_number != 1:
+		if self.round_number != 1 and self.round_number != Constants.num_rounds:
+			if (self.participant.vars['order3'] == 1 and self.round_number != 2) or (self.participant.vars['order3'] == Constants.num_rounds and self.round_number != (Constants.num_rounds - 1)):
 				prev_player = self.player.in_round(self.round_number - 1)
 				row = {
 					'round_number': prev_player.round_number,
@@ -28,10 +28,19 @@ class Display(Page):
 					'outcome': prev_player.outcome,
 				}
 				table_rows.append(row)
+		if (self.participant.vars['order'] == 1 and self.round_number == Constants.num_rounds) or (self.participant.vars['order'] == Constants.num_rounds and self.round_number == (Constants.num_rounds - 1)):
+			title = 'Consequential Choice'
+			instruct = 'Based on your experience from the sampling phase, make a choice between A and B. You will NOT receive feedback on this choice bu the outcome will be stored to calculate your bonus payment at the end of the study.'
+		else:
+			title = 'Experience'
+			instruct = 'Before you make a choice between buttons A and B, you will be allowed to explore the points that you gain or lose from each of the buttons by pressing on the buttons and observing the outcomes without any consequences. You will be asked to explore the buttons a total of 20 times during this sampling phase. After the sampling phase, you will then be asked to make one consequential choice. Your bonus payment will depend on the number of points obtained from this consequential choice.'
 
 		return {'table_rows': table_rows,
 				'order': self.participant.vars['order3'],
-				'test': (self.participant.vars['order3'] + 1) == self.round_number,
+				'title': title,
+				'instructions': instruct,
+				'test': Constants.num_rounds != self.round_number,
+				'test2': not (self.participant.vars['order3'] == 1 and self.round_number != 2),
 		       }
 
 	def before_next_page(self):
@@ -50,6 +59,32 @@ class Display(Page):
 				p = self.player.in_round(self.participant.vars['pay_pick3']).outcome
 				if p > 0:
 					self.player.payoff = c(math.log(p) / 10)
+
+class Feedback(Page):
+	form_model = models.Player
+
+	def is_displayed(self):
+		if self.participant.vars['order3'] == 1:
+			return self.round_number == Constants.num_rounds
+		else:
+			return self.round_number == (Constants.num_rounds - 1)
+
+	def vars_for_template(self):
+		table_rows = []
+		if (self.participant.vars['order3'] + 1) != self.round_number:
+			if self.participant.vars['order3'] != self.round_number & self.round_number != 1:
+				prev_player = self.player.in_round(self.round_number - 1)
+				row = {
+					'round_number': prev_player.round_number,
+					'choice': prev_player.choice,
+					'outcome': prev_player.outcome,
+				}
+				table_rows.append(row)
+
+		return {'table_rows': table_rows,
+				'order': self.participant.vars['order3'],
+				'test': (self.participant.vars['order3'] + 1) == self.round_number,
+		       }
 
 class Description(Page):
 	form_model = models.Player
@@ -121,15 +156,17 @@ class Pay(Page):
 		return self.round_number == Constants.num_rounds
 
 	def vars_for_template(self):
-		return {'current_points': self.player.in_round(self.participant.vars['pay_pick']).outcome,
+		return {'current_points': self.player.in_round(self.participant.vars['pay_pick3']).outcome,
 		        'current_payoff': c(self.participant.payoff),
 		       }
 
+class deed_info(Page):
+	def is_displayed(self):
+		return self.round_number == 1
+
 page_sequence = [
-	e_consequence,
-	d_intro,
+	Feedback,
     Description,
-    e_intro,
     Display,
     Pay,
 ]
