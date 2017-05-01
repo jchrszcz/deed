@@ -28,9 +28,7 @@ class Player(BasePlayer):
 
     country = CountryField(
         verbose_name='What is your country of citizenship?')
-    age = models.CharField(verbose_name='How old are you, rounded to the nearest year?',
-                                      initial=None,
-                                      widget=widgets.TextInput())
+    age = models.PositiveIntegerField(verbose_name='How old are you, rounded to the nearest year?')
     gender = models.CharField(initial=None,
                                 choices=['Male', 'Female'],
                                 verbose_name='What is your gender?',

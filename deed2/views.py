@@ -21,13 +21,22 @@ class Display(Page):
 		table_rows = []
 		if self.round_number != 1 and self.round_number != Constants.num_rounds:
 			if (self.participant.vars['order2'] == 1 and self.round_number != 2) or (self.participant.vars['order2'] == Constants.num_rounds and self.round_number != (Constants.num_rounds - 1)):
-				prev_player = self.player.in_round(self.round_number - 1)
-				row = {
-					'round_number': prev_player.round_number,
-					'choice': prev_player.choice,
-					'outcome': prev_player.outcome,
-				}
-				table_rows.append(row)
+				if self.participant.vars['order2'] == 1:
+					prev_player = self.player.in_round(self.round_number - 1)
+					row = {
+						'round_number': prev_player.round_number - 1,
+						'choice': prev_player.choice,
+						'outcome': prev_player.outcome,
+					}
+					table_rows.append(row)
+				else:
+					prev_player = self.player.in_round(self.round_number - 1)
+					row = {
+						'round_number': prev_player.round_number,
+						'choice': prev_player.choice,
+						'outcome': prev_player.outcome,
+					}
+					table_rows.append(row)
 		if (self.participant.vars['order2'] == 1 and self.round_number == Constants.num_rounds) or (self.participant.vars['order2'] == Constants.num_rounds and self.round_number == (Constants.num_rounds - 1)):
 			title = 'Consequential Choice'
 			titleblock = 'Consequential Choice'
