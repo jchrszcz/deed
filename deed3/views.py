@@ -28,16 +28,20 @@ class Display(Page):
 					'outcome': prev_player.outcome,
 				}
 				table_rows.append(row)
-		if (self.participant.vars['order'] == 1 and self.round_number == Constants.num_rounds) or (self.participant.vars['order'] == Constants.num_rounds and self.round_number == (Constants.num_rounds - 1)):
+		if (self.participant.vars['order3'] == 1 and self.round_number == Constants.num_rounds) or (self.participant.vars['order3'] == Constants.num_rounds and self.round_number == (Constants.num_rounds - 1)):
 			title = 'Consequential Choice'
-			instruct = 'Based on your experience from the sampling phase, make a choice between A and B. You will NOT receive feedback on this choice bu the outcome will be stored to calculate your bonus payment at the end of the study.'
+			titleblock = 'Consequential Choice'
+			instruct = 'Based on your experience from the sampling phase, make a choice between A and B. You will NOT receive feedback on this choice but the outcome will be stored to calculate your bonus payment at the end of the study.'
 		else:
 			title = 'Experience'
+			titleblock = 'Sampling Phase'
 			instruct = 'Before you make a choice between buttons A and B, you will be allowed to explore the points that you gain or lose from each of the buttons by pressing on the buttons and observing the outcomes without any consequences. You will be asked to explore the buttons a total of 20 times during this sampling phase. After the sampling phase, you will then be asked to make one consequential choice. Your bonus payment will depend on the number of points obtained from this consequential choice.'
+
 
 		return {'table_rows': table_rows,
 				'order': self.participant.vars['order3'],
 				'title': title,
+				'titleblock': titleblock,
 				'instructions': instruct,
 				'test': Constants.num_rounds != self.round_number,
 				'test2': not (self.participant.vars['order3'] == 1 and self.round_number != 2),
