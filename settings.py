@@ -144,12 +144,6 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['consent', 'deed', 'deed2', 'deed3', 'survey', 'deed_payment_info'],
     },
-    {
-        'name': 'survey',
-        'display_name': 'test',
-        'num_demo_participants': 1,
-        'app_sequence': ['survey'],
-    },
 ]
 
 # anything you put after the below line will override

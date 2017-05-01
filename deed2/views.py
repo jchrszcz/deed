@@ -86,14 +86,22 @@ class Feedback(Page):
 		table_rows = []
 		if (self.participant.vars['order2'] + 1) != self.round_number:
 			if self.participant.vars['order2'] != self.round_number & self.round_number != 1:
-				prev_player = self.player.in_round(self.round_number - 1)
-				row = {
-					'round_number': prev_player.round_number,
-					'choice': prev_player.choice,
-					'outcome': prev_player.outcome,
-				}
-				table_rows.append(row)
-
+				if self.participant.vars['order2'] == 1:
+					prev_player = self.player.in_round(self.round_number - 1)
+					row = {
+						'round_number': prev_player.round_number - 1,
+						'choice': prev_player.choice,
+						'outcome': prev_player.outcome,
+					}
+					table_rows.append(row)
+				else:
+					prev_player = self.player.in_round(self.round_number - 1)
+					row = {
+						'round_number': prev_player.round_number,
+						'choice': prev_player.choice,
+						'outcome': prev_player.outcome,
+					}
+					table_rows.append(row)
 		return {'table_rows': table_rows,
 				'order': self.participant.vars['order2'],
 				'test': (self.participant.vars['order2'] + 1) == self.round_number,
