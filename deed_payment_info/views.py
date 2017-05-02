@@ -11,4 +11,7 @@ class PaymentInfo(Page):
 	def vars_for_template(self):
 		return {'total':self.participant.payoff_plus_participation_fee()}
 
-page_sequence = [PaymentInfo]
+class End(Page):
+	pass
+
+page_sequence = [PaymentInfo, End]
