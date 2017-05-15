@@ -19,6 +19,7 @@ else:
 
 # don't share this with anybody.
 SECRET_KEY = 'a0v-sv^=ct$g^)!f-z4d@#26%f!s&=xw!#j^zv85qy^26!637e'
+SENTRY_DSN = 'http://5ae42646ea4d406a9822cae8140a335b:328c3f6924634567983e087ae6044a36@sentry.otree.org/165'
 
 # To use a database other than sqlite,
 # set the DATABASE_URL environment variable.

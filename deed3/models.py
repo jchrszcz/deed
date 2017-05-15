@@ -36,14 +36,7 @@ def createGamble(certain, reduced):
 		else:
 			v21 = round(random.random() * 200 - 100, 1)
 		v22 = round((ev - p21 * v21) / p22, 1)
-	stims = pd.DataFrame({'v11' : v11,
-			              'v12' : v12,
-			              'v21' : v21,
-			              'v22' : v22,
-			              'p11' : p11,
-			              'p12' : p12,
-			              'p21' : p21,
-			              'p22' : p22}, index = [0])
+	stims = [v11, v12, v21, v22, p11, p12, p21, p22]
 	return [certain, reduced, stims]
 
 def stim_setup():
@@ -67,7 +60,10 @@ class Subsession(BaseSubsession):
 	def before_session_starts(self):
 		if self.round_number == 1:
 			for p in self.get_players():
-				p.participant.vars['stims3'] = stim_setup()
+				stims = stim_setup()
+				p.participant.vars['stims3'] = stims[2]
+				p.participant.vars['certain3'] = stims[0]
+				p.participant.vars['reduced3'] = stims[1]
 				if random.random() < .5:
 					p.participant.vars['order3'] = 1
 				else:
