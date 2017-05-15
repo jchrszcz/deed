@@ -59,15 +59,15 @@ class Display(Page):
 	def before_next_page(self):
 		p = random.random()
 		if self.player.choice == 'A':
-			if p_tar < self.participant.vars['stims'][4]:
-				payoff = self.participant.vars['stims'][0]
+			if p_tar < self.participant.vars['p_1_1_1']:
+				payoff = self.participant.vars['v_1_1_1']
 			else:
-				payoff = self.participant.vars['stims'][1]
+				payoff = self.participant.vars['v_1_2_1']
 		else:
-			if p_tar < self.participant.vars['stims'][6]:
-				payoff = self.participant.vars['stims'][2]
+			if p_tar < self.participant.vars['p_2_1_1']:
+				payoff = self.participant.vars['v_2_1_1']
 			else:
-				payoff = self.participant.vars['stims'][3]
+				payoff = self.participant.vars['v_2_2_1']
 		self.player.outcome = payoff
 		if self.round_number == Constants.num_rounds:
 				p = self.player.in_round(self.participant.vars['pay_pick']).outcome
@@ -118,8 +118,8 @@ class Description(Page):
 	def vars_for_template(self):
 		table_rows = []
 		row = {
-			'choicea': str(int(self.participant.vars['stims'][0])) + ' (' + str(int(self.participant.vars['stims'][4] * 100)) + '%) or ' +  str(int(self.participant.vars['stims'][1])) + ' (' + str(int(self.participant.vars['stims'][5] * 100)) + '%)', 
-			'choiceb': str(int(self.participant.vars['stims'][2])) + ' (' + str(int(self.participant.vars['stims'][6] * 100)) + '%) or ' +  str(int(self.participant.vars['stims'][3])) + ' (' + str(int(self.participant.vars['stims'][7] * 100)) + '%)',
+			'choicea': str(int(self.participant.vars['v_1_1_1'])) + ' (' + str(int(self.participant.vars['p_1_1_1'] * 100)) + '%) or ' +  str(int(self.participant.vars['v_1_2_1'])) + ' (' + str(int(self.participant.vars['p_1_2_1'] * 100)) + '%)', 
+			'choiceb': str(int(self.participant.vars['v_2_1_1'])) + ' (' + str(int(self.participant.vars['p_2_1_1'] * 100)) + '%) or ' +  str(int(self.participant.vars['v_2_2_1'])) + ' (' + str(int(self.participant.vars['p_2_2_1'] * 100)) + '%)',
 		}
 		table_rows.append(row)
 
@@ -128,15 +128,15 @@ class Description(Page):
 	def before_next_page(self):
 		p = random.random()
 		if self.player.choice == 'A':
-			if p_tar < self.participant.vars['stims'][4]:
-				payoff = self.participant.vars['stims'][0]
+			if p_tar < self.participant.vars['p_1_1_1']:
+				payoff = self.participant.vars['v_1_1_1']
 			else:
-				payoff = self.participant.vars['stims'][1]
+				payoff = self.participant.vars['v_1_2_1']
 		else:
-			if p_tar < self.participant.vars['stims'][6]:
-				payoff = self.participant.vars['stims'][2]
+			if p_tar < self.participant.vars['p_2_1_1']:
+				payoff = self.participant.vars['v_2_1_1']
 			else:
-				payoff = self.participant.vars['stims'][3]
+				payoff = self.participant.vars['v_2_2_1']
 		self.player.outcome = payoff
 		if self.round_number == Constants.num_rounds:
 				p = self.player.in_round(self.participant.vars['pay_pick']).outcome

@@ -61,9 +61,16 @@ class Subsession(BaseSubsession):
 		if self.round_number == 1:
 			for p in self.get_players():
 				stims = stim_setup()
-				p.participant.vars['stims3'] = stims[2]
-				p.participant.vars['certain3'] = stims[0]
-				p.participant.vars['reduced3'] = stims[1]
+				p.participant.vars['v_1_1_3'] = stims[2][0]
+				p.participant.vars['v_1_2_3'] = stims[2][1]
+				p.participant.vars['v_2_1_3'] = stims[2][2]
+				p.participant.vars['v_2_2_3'] = stims[2][3]
+				p.participant.vars['p_1_1_3'] = stims[2][4]
+				p.participant.vars['p_1_2_3'] = stims[2][5]
+				p.participant.vars['p_2_1_3'] = stims[2][6]
+				p.participant.vars['p_2_2_3'] = stims[2][7]
+				p.participant.vars['certain_3'] = stims[0]
+				p.participant.vars['reduced_3'] = stims[1]
 				if random.random() < .5:
 					p.participant.vars['order3'] = 1
 				else:
