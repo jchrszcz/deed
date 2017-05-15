@@ -57,7 +57,7 @@ class Display(Page):
 		       }
 
 	def before_next_page(self):
-		p = random.random()
+		p_tar = random.random()
 		if self.player.choice == 'A':
 			if p_tar < self.participant.vars['p_1_1_3']:
 				payoff = self.participant.vars['v_1_1_3']
@@ -126,7 +126,7 @@ class Description(Page):
 		return {'table_rows': table_rows}
 
 	def before_next_page(self):
-		p = random.random()
+		p_tar = random.random()
 		if self.player.choice == 'A':
 			if p_tar < self.participant.vars['p_1_1_3']:
 				payoff = self.participant.vars['v_1_1_3']
