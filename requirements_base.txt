@@ -14,7 +14,7 @@ Cython==0.25.2
 daphne==0.14.3
 decorator==4.0.10
 dj-database-url==0.4.1
-Django==2.2.24
+Django==2.2.27
 django-countries==4.0
 django-easymoney==0.7.1
 django-floppyforms==1.7.0
